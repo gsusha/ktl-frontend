@@ -4,21 +4,21 @@ import { Controller, FormProvider, useForm } from 'react-hook-form';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
-import { createOrUpdateClient, deleteClient, getClientDetail } from '../store/ClientsStore';
+import { createOrUpdateApp, deleteApp, getAppDetail } from '../store/AppsStore';
 import HelmLoading from '../../../../components/loading/HelmLoading';
 import AnimateButton from '../../../../ui-component/extended/AnimateButton';
 import { useNavigate } from 'react-router-dom';
 import { ShowError, ShowSuccess } from '../../../../components/HelmAlert';
 
-function ClientDetail() {
+function AppDetail() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const routeParams = useParams();
 
-    const client = useSelector((state) => state.pages.client);
-    const clientId = useMemo(() => (routeParams?.id !== 'new' ? routeParams?.id : null), [routeParams]);
+    const app = useSelector((state) => state.pages.app);
+    const appId = useMemo(() => (routeParams?.id !== 'new' ? routeParams?.id : null), [routeParams]);
 
-    const [noClient, setNoClient] = useState(false);
+    const [noApp, setNoApp] = useState(false);
     const [loading, setLoading] = useState(true);
     const [success, setSuccess] = useState('');
 
@@ -35,52 +35,52 @@ function ClientDetail() {
         formState: { errors }
     } = methods;
 
-    useEffect(() => reset(client), [client, reset]);
+    useEffect(() => reset(app), [app, reset]);
 
     useEffect(() => {
         setLoading(true);
-        if (clientId) {
-            dispatch(getClientDetail(clientId)).then((action) => {
+        if (appId) {
+            dispatch(getAppDetail(appId)).then((action) => {
                 setLoading(false);
                 if (!action.payload) {
-                    setNoClient(true);
+                    setNoApp(true);
                 }
             });
         } else {
             setLoading(false);
         }
-    }, [clientId, dispatch]);
+    }, [appId, dispatch]);
 
     const deleteHandler = useCallback(() => {
-        dispatch(deleteClient(clientId)).then(({ payload }) => {
+        dispatch(deleteApp(appId)).then(({ payload }) => {
             if (!payload) {
                 setSuccess(false);
             } else {
                 setSuccess(true);
-                navigate('/clients');
+                navigate('/apps');
             }
         });
-    }, [dispatch, clientId, navigate]);
+    }, [dispatch, appId, navigate]);
 
     const saveHandler = useCallback(async () => {
         await trigger().then((check) => {
             if (!check) {
                 setSuccess(false);
             }
-            dispatch(createOrUpdateClient({ data: getValues(), id: clientId })).then(({ payload }) => {
+            dispatch(createOrUpdateApp({ data: getValues(), id: appId })).then(({ payload }) => {
                 if (!payload) {
                     setSuccess(false);
                 } else {
                     setSuccess(true);
-                    if (!clientId) {
-                        navigate(`/clients/${payload.id}`);
+                    if (!appId) {
+                        navigate(`/apps/${payload.id}`);
                     }
                 }
             });
         });
-    }, [dispatch, clientId, getValues, navigate, trigger]);
+    }, [dispatch, appId, getValues, navigate, trigger]);
 
-    if (noClient) {
+    if (noApp) {
         return (
             <MainCard>
                 <Typography sx={{ marginBottom: '20px' }}>Клиент не найден</Typography>
@@ -98,10 +98,10 @@ function ClientDetail() {
                 <div style={{ display: 'flex', gap: '10px' }}>
                     <AnimateButton>
                         <Button disableElevation size="medium" type="submit" variant="contained" color="secondary" onClick={saveHandler}>
-                            {clientId ? 'Обновить' : 'Сохранить'}
+                            {appId ? 'Обновить' : 'Сохранить'}
                         </Button>
                     </AnimateButton>
-                    {clientId && (
+                    {appId && (
                         <AnimateButton>
                             <Button
                                 disableElevation
@@ -197,4 +197,4 @@ function ClientDetail() {
     );
 }
 
-export default ClientDetail;
+export default AppDetail;

@@ -30,9 +30,9 @@ const DayScheduleCard = ({ isLoading }) => {
             ) : (
                 <MainCard>
                     <Typography variant="h4" sx={{ marginBottom: '20px' }}>
-                        Приём на сегодня:
+                        Какая-то карточка
                     </Typography>
-                    {!isLoading ? DaySchedule(new Date(), data) : <HelmLoading />}
+                    {!isLoading ? <Typography>Какая-то статистика</Typography> : <HelmLoading />}
                 </MainCard>
             )}
         </>

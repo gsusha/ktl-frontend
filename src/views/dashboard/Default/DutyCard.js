@@ -17,7 +17,7 @@ const DutyCard = ({ isLoading }) => {
                             <Grid item xs={12} style={{ marginBottom: '16px' }}>
                                 <Grid container alignContent="center" justifyContent="space-between">
                                     <Grid item>
-                                        <Typography variant="h4">Сегодня дежурят:</Typography>
+                                        <Typography variant="h4">Активные заявки:</Typography>
                                     </Grid>
                                 </Grid>
                             </Grid>
@@ -33,7 +33,7 @@ const DutyCard = ({ isLoading }) => {
                                         </Grid>
                                         <Grid item>
                                             <Typography variant="subtitle2" color="inherit">
-                                                Ветеринарный врач
+                                                пл. Рабочая, д. 6, кв. 46
                                             </Typography>
                                         </Grid>
                                     </Grid>
@@ -46,13 +46,13 @@ const DutyCard = ({ isLoading }) => {
                                         <Grid container alignItems="center" justifyContent="space-between">
                                             <Grid item>
                                                 <Typography variant="subtitle1" color="inherit">
-                                                    Надежда Соколова
+                                                    Руслан Узаиров
                                                 </Typography>
                                             </Grid>
                                         </Grid>
                                         <Grid item>
                                             <Typography variant="subtitle2" color="inherit">
-                                                Генерал
+                                                ул. Калинина, д. 32а, кв. 69
                                             </Typography>
                                         </Grid>
                                     </Grid>

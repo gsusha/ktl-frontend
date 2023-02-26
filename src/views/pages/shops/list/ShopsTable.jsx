@@ -2,14 +2,14 @@ import { useEffect, useState } from 'react';
 import MainCard from 'ui-component/cards/MainCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { DataGrid, ruRU } from '@mui/x-data-grid';
-import { getClients } from '../store/ClientsStore';
+import { getShops } from '../store/ShopsStore';
 import { useNavigate } from 'react-router-dom';
 import { HelmTitle } from '../../../../components/cardHeader/HelmTitle';
 
-const clientsColumn = [
+const shopsColumn = [
     {
         field: 'name',
-        headerName: 'Название',
+        headerName: 'Имя',
         sortable: true,
         flex: 1
     },
@@ -24,31 +24,43 @@ const clientsColumn = [
         headerName: 'Телефон',
         sortable: false,
         flex: 1
+    },
+    {
+        field: 'boiler',
+        headerName: 'Котёл',
+        sortable: false,
+        flex: 1
+    },
+    {
+        field: 'doc',
+        headerName: 'Договор',
+        sortable: false,
+        flex: 0
     }
 ];
 
-function ClientsTable() {
+function ShopsTable() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const clients = useSelector((state) => state.pages.clients);
+    const shops = useSelector((state) => state.pages.shops);
 
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         setLoading(true);
-        dispatch(getClients()).then(() => setLoading(false));
+        dispatch(getShops()).then(() => setLoading(false));
     }, [dispatch]);
 
     const handleClick = (id) => {
-        navigate(`/clients/${id}`);
+        navigate(`/shops/${id}`);
     };
 
     return (
-        <MainCard title={HelmTitle('Клиенты', 'clients')}>
+        <MainCard title={HelmTitle('Магазины', 'shops')}>
             <div style={{ height: 400, width: '100%' }}>
                 <DataGrid
-                    rows={clients || []}
-                    columns={clientsColumn}
+                    rows={shops || []}
+                    columns={shopsColumn}
                     pageSize={5}
                     autoPageSize={true}
                     loading={loading}
@@ -62,4 +74,4 @@ function ClientsTable() {
     );
 }
 
-export default ClientsTable;
+export default ShopsTable;

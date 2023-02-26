@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import MainCard from 'ui-component/cards/MainCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { DataGrid, ruRU } from '@mui/x-data-grid';
-import { getClients } from '../store/ClientsStore';
+import { getBoilers } from '../store/BoilersStore';
 import { useNavigate } from 'react-router-dom';
 import { HelmTitle } from '../../../../components/cardHeader/HelmTitle';
 
-const clientsColumn = [
+const boilersColumn = [
     {
         field: 'name',
         headerName: 'Название',
@@ -14,41 +14,35 @@ const clientsColumn = [
         flex: 1
     },
     {
-        field: 'address',
-        headerName: 'Адрес',
-        sortable: false,
-        flex: 1
-    },
-    {
-        field: 'phone',
-        headerName: 'Телефон',
-        sortable: false,
-        flex: 1
+        field: 'certificate',
+        headerName: 'Сертификат',
+        sortable: true,
+        flex: 0
     }
 ];
 
-function ClientsTable() {
+function BoilersTable() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const clients = useSelector((state) => state.pages.clients);
+    const boilers = useSelector((state) => state.pages.boilers);
 
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         setLoading(true);
-        dispatch(getClients()).then(() => setLoading(false));
+        dispatch(getBoilers()).then(() => setLoading(false));
     }, [dispatch]);
 
     const handleClick = (id) => {
-        navigate(`/clients/${id}`);
+        navigate(`/boilers/${id}`);
     };
 
     return (
-        <MainCard title={HelmTitle('Клиенты', 'clients')}>
+        <MainCard title={HelmTitle('Клиенты', 'boilers')}>
             <div style={{ height: 400, width: '100%' }}>
                 <DataGrid
-                    rows={clients || []}
-                    columns={clientsColumn}
+                    rows={boilers || []}
+                    columns={boilersColumn}
                     pageSize={5}
                     autoPageSize={true}
                     loading={loading}
@@ -62,4 +56,4 @@ function ClientsTable() {
     );
 }
 
-export default ClientsTable;
+export default BoilersTable;

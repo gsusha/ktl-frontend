@@ -312,7 +312,7 @@ const AverageBillCard = ({ isLoading }) => {
                                                         color: theme.palette.primary[200]
                                                     }}
                                                 >
-                                                    Средний чек
+                                                    Сумма
                                                 </Typography>
                                             </Grid>
                                         </Grid>

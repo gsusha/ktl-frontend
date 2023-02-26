@@ -4,21 +4,21 @@ import { Controller, FormProvider, useForm } from 'react-hook-form';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
-import { createOrUpdateClient, deleteClient, getClientDetail } from '../store/ClientsStore';
+import { createOrUpdateBoiler, deleteBoiler, getBoilerDetail } from '../store/BoilersStore';
 import HelmLoading from '../../../../components/loading/HelmLoading';
 import AnimateButton from '../../../../ui-component/extended/AnimateButton';
 import { useNavigate } from 'react-router-dom';
 import { ShowError, ShowSuccess } from '../../../../components/HelmAlert';
 
-function ClientDetail() {
+function BoilerDetail() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const routeParams = useParams();
 
-    const client = useSelector((state) => state.pages.client);
-    const clientId = useMemo(() => (routeParams?.id !== 'new' ? routeParams?.id : null), [routeParams]);
+    const boiler = useSelector((state) => state.pages.boiler);
+    const boilerId = useMemo(() => (routeParams?.id !== 'new' ? routeParams?.id : null), [routeParams]);
 
-    const [noClient, setNoClient] = useState(false);
+    const [noBoiler, setNoBoiler] = useState(false);
     const [loading, setLoading] = useState(true);
     const [success, setSuccess] = useState('');
 
@@ -35,52 +35,52 @@ function ClientDetail() {
         formState: { errors }
     } = methods;
 
-    useEffect(() => reset(client), [client, reset]);
+    useEffect(() => reset(boiler), [boiler, reset]);
 
     useEffect(() => {
         setLoading(true);
-        if (clientId) {
-            dispatch(getClientDetail(clientId)).then((action) => {
+        if (boilerId) {
+            dispatch(getBoilerDetail(boilerId)).then((action) => {
                 setLoading(false);
                 if (!action.payload) {
-                    setNoClient(true);
+                    setNoBoiler(true);
                 }
             });
         } else {
             setLoading(false);
         }
-    }, [clientId, dispatch]);
+    }, [boilerId, dispatch]);
 
     const deleteHandler = useCallback(() => {
-        dispatch(deleteClient(clientId)).then(({ payload }) => {
+        dispatch(deleteBoiler(boilerId)).then(({ payload }) => {
             if (!payload) {
                 setSuccess(false);
             } else {
                 setSuccess(true);
-                navigate('/clients');
+                navigate('/boilers');
             }
         });
-    }, [dispatch, clientId, navigate]);
+    }, [dispatch, boilerId, navigate]);
 
     const saveHandler = useCallback(async () => {
         await trigger().then((check) => {
             if (!check) {
                 setSuccess(false);
             }
-            dispatch(createOrUpdateClient({ data: getValues(), id: clientId })).then(({ payload }) => {
+            dispatch(createOrUpdateBoiler({ data: getValues(), id: boilerId })).then(({ payload }) => {
                 if (!payload) {
                     setSuccess(false);
                 } else {
                     setSuccess(true);
-                    if (!clientId) {
-                        navigate(`/clients/${payload.id}`);
+                    if (!boilerId) {
+                        navigate(`/boilers/${payload.id}`);
                     }
                 }
             });
         });
-    }, [dispatch, clientId, getValues, navigate, trigger]);
+    }, [dispatch, boilerId, getValues, navigate, trigger]);
 
-    if (noClient) {
+    if (noBoiler) {
         return (
             <MainCard>
                 <Typography sx={{ marginBottom: '20px' }}>Клиент не найден</Typography>
@@ -98,10 +98,10 @@ function ClientDetail() {
                 <div style={{ display: 'flex', gap: '10px' }}>
                     <AnimateButton>
                         <Button disableElevation size="medium" type="submit" variant="contained" color="secondary" onClick={saveHandler}>
-                            {clientId ? 'Обновить' : 'Сохранить'}
+                            {boilerId ? 'Обновить' : 'Сохранить'}
                         </Button>
                     </AnimateButton>
-                    {clientId && (
+                    {boilerId && (
                         <AnimateButton>
                             <Button
                                 disableElevation
@@ -197,4 +197,4 @@ function ClientDetail() {
     );
 }
 
-export default ClientDetail;
+export default BoilerDetail;
