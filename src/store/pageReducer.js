@@ -1,45 +1,23 @@
 // action - state management
 import * as actionTypes from './actions';
-import { defaultAppointments, defaultShifts } from './constant';
 
 export const initialState = {
-    doctors: [],
     clients: [],
-    patients: [],
-    appointments: defaultAppointments,
-    services: [],
-    shifts: defaultShifts,
-    stuff: [],
-    appointment: null,
-    doctor: null,
+    apps: [],
+    docs: [],
+    shops: [],
+    boilers: [],
     client: null,
-    patient: null,
-    service: null,
-    shift: null
+    app: null,
+    doc: null,
+    shop: null,
+    boiler: null
 };
 
 // ==============================|| CUSTOMIZATION REDUCER ||============================== //
 
 const pageReducer = (state = initialState, action) => {
     switch (action.type) {
-        // Врачи
-        case actionTypes.GET_DOCTORS:
-            return {
-                doctors: (state.doctors = action.payload)
-            };
-        case actionTypes.GET_DOCTOR:
-            return {
-                doctor: (state.doctor = action.payload)
-            };
-        case actionTypes.CREATE_OR_UPDATE_DOCTOR:
-            return {
-                doctor: (state.doctor = action.payload)
-            };
-        case actionTypes.DELETE_DOCTOR:
-            return {
-                doctor: (state.doctor = action.payload)
-            };
-        //
         // Клиенты
         case actionTypes.GET_CLIENTS:
             return {
@@ -58,94 +36,76 @@ const pageReducer = (state = initialState, action) => {
                 client: (state.client = action.payload)
             };
         //
-        // Пациенты
-        case actionTypes.GET_PATIENTS:
+        // Заявки
+        case actionTypes.GET_APPS:
             return {
-                patients: (state.patients = action.payload)
+                patients: (state.apps = action.payload)
             };
-        case actionTypes.GET_PATIENT:
+        case actionTypes.GET_APP:
             return {
-                patient: (state.patient = action.payload)
+                patient: (state.app = action.payload)
             };
-        case actionTypes.CREATE_OR_UPDATE_PATIENT:
+        case actionTypes.CREATE_OR_UPDATE_APP:
             return {
-                patient: (state.patient = action.payload)
+                patient: (state.app = action.payload)
             };
-        case actionTypes.DELETE_PATIENT:
+        case actionTypes.DELETE_APP:
             return {
-                patient: (state.patient = action.payload)
-            };
-        //
-        // Приём
-        case actionTypes.GET_APPOINTMENTS:
-            return {
-                appointments: (state.appointments = action.payload)
-            };
-        case actionTypes.GET_APPOINTMENT:
-            return {
-                appointment: (state.appointment = action.payload)
-            };
-        case actionTypes.CREATE_OR_UPDATE_APPOINTMENT:
-            return {
-                appointment: (state.appointment = action.payload)
-            };
-        case actionTypes.DELETE_APPOINTMENT:
-            return {
-                appointment: (state.appointment = action.payload)
+                patient: (state.app = action.payload)
             };
         //
-        // Услуги
-        case actionTypes.GET_SERVICES:
+        // Договоры
+        case actionTypes.GET_DOCS:
             return {
-                services: (state.services = action.payload)
+                patients: (state.docs = action.payload)
             };
-        case actionTypes.GET_SERVICE:
+        case actionTypes.GET_DOC:
             return {
-                service: (state.service = action.payload)
+                patient: (state.doc = action.payload)
             };
-        case actionTypes.CREATE_OR_UPDATE_SERVICE:
+        case actionTypes.CREATE_OR_UPDATE_DOC:
             return {
-                service: (state.service = action.payload)
+                patient: (state.doc = action.payload)
             };
-        case actionTypes.DELETE_SERVICE:
+        case actionTypes.DELETE_DOC:
             return {
-                service: (state.service = action.payload)
-            };
-        //
-        // Смены
-        case actionTypes.GET_SHIFTS:
-            return {
-                shifts: (state.shifts = action.payload)
-            };
-        case actionTypes.GET_SHIFT:
-            return {
-                shift: (state.shift = action.payload)
-            };
-        case actionTypes.CREATE_OR_UPDATE_SHIFT:
-            return {
-                shift: (state.shift = action.payload)
-            };
-        case actionTypes.DELETE_SHIFT:
-            return {
-                shift: (state.shift = action.payload)
+                patient: (state.doc = action.payload)
             };
         //
-        // Смены
-        case actionTypes.GET_STUFF:
+        // Магазины
+        case actionTypes.GET_SHOPS:
             return {
-                stuff: (state.stuff = action.payload)
+                patients: (state.shops = action.payload)
             };
-        case actionTypes.GET_STUFF_DETAIL:
+        case actionTypes.GET_SHOP:
             return {
-                stuff: (state.stuff = action.payload)
+                patient: (state.shop = action.payload)
             };
-        case actionTypes.CREATE_OR_UPDATE_STUFF:
+        case actionTypes.CREATE_OR_UPDATE_SHOP:
             return {
-                stuff: (state.stuff = action.payload)
+                patient: (state.shop = action.payload)
             };
-        case actionTypes.DELETE_STUFF:
+        case actionTypes.DELETE_SHOP:
             return {
-                stuff: (state.stuff = action.payload)
+                patient: (state.shop = action.payload)
+            };
+        //
+        // Котлы
+        case actionTypes.GET_BOILERS:
+            return {
+                patients: (state.boilers = action.payload)
+            };
+        case actionTypes.GET_BOILER:
+            return {
+                patient: (state.boiler = action.payload)
+            };
+        case actionTypes.CREATE_OR_UPDATE_BOILER:
+            return {
+                patient: (state.boiler = action.payload)
+            };
+        case actionTypes.DELETE_BOILER:
+            return {
+                patient: (state.boiler = action.payload)
             };
         default:
             return state;

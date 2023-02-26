@@ -8,7 +8,7 @@ import { HelmTitle } from '../../../../components/cardHeader/HelmTitle';
 
 const boilersColumn = [
     {
-        field: 'name',
+        field: 'brand',
         headerName: 'Название',
         sortable: true,
         flex: 1
