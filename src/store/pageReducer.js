@@ -39,73 +39,73 @@ const pageReducer = (state = initialState, action) => {
         // Заявки
         case actionTypes.GET_APPS:
             return {
-                patients: (state.apps = action.payload)
+                apps: (state.apps = action.payload)
             };
         case actionTypes.GET_APP:
             return {
-                patient: (state.app = action.payload)
+                app: (state.app = action.payload)
             };
         case actionTypes.CREATE_OR_UPDATE_APP:
             return {
-                patient: (state.app = action.payload)
+                app: (state.app = action.payload)
             };
         case actionTypes.DELETE_APP:
             return {
-                patient: (state.app = action.payload)
+                app: (state.app = action.payload)
             };
         //
         // Договоры
         case actionTypes.GET_DOCS:
             return {
-                patients: (state.docs = action.payload)
+                docs: (state.docs = action.payload)
             };
         case actionTypes.GET_DOC:
             return {
-                patient: (state.doc = action.payload)
+                doc: (state.doc = action.payload)
             };
         case actionTypes.CREATE_OR_UPDATE_DOC:
             return {
-                patient: (state.doc = action.payload)
+                doc: (state.doc = action.payload)
             };
         case actionTypes.DELETE_DOC:
             return {
-                patient: (state.doc = action.payload)
+                doc: (state.doc = action.payload)
             };
         //
         // Магазины
         case actionTypes.GET_SHOPS:
             return {
-                patients: (state.shops = action.payload)
+                shops: (state.shops = action.payload)
             };
         case actionTypes.GET_SHOP:
             return {
-                patient: (state.shop = action.payload)
+                shop: (state.shop = action.payload)
             };
         case actionTypes.CREATE_OR_UPDATE_SHOP:
             return {
-                patient: (state.shop = action.payload)
+                shop: (state.shop = action.payload)
             };
         case actionTypes.DELETE_SHOP:
             return {
-                patient: (state.shop = action.payload)
+                shop: (state.shop = action.payload)
             };
         //
         // Котлы
         case actionTypes.GET_BOILERS:
             return {
-                patients: (state.boilers = action.payload)
+                boilers: (state.boilers = action.payload)
             };
         case actionTypes.GET_BOILER:
             return {
-                patient: (state.boiler = action.payload)
+                boiler: (state.boiler = action.payload)
             };
         case actionTypes.CREATE_OR_UPDATE_BOILER:
             return {
-                patient: (state.boiler = action.payload)
+                boiler: (state.boiler = action.payload)
             };
         case actionTypes.DELETE_BOILER:
             return {
-                patient: (state.boiler = action.payload)
+                boiler: (state.boiler = action.payload)
             };
         default:
             return state;

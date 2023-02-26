@@ -38,7 +38,7 @@ function BoilersTable() {
     };
 
     return (
-        <MainCard title={HelmTitle('Клиенты', 'boilers')}>
+        <MainCard title={HelmTitle('Котлы', 'boilers')}>
             <div style={{ height: 400, width: '100%' }}>
                 <DataGrid
                     rows={boilers || []}
