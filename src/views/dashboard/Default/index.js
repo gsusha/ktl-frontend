@@ -9,18 +9,17 @@ import AverageBillCard from './AverageBillCard';
 import DayScheduleCard from './DayScheduleCard';
 import { gridSpacing } from 'store/constant';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAppointments } from '../../pages/appointment/appointmentStore';
-import { getShifts } from '../../pages/shifts/store/shiftsStore';
 
 // ==============================|| DEFAULT DASHBOARD ||============================== //
 
 const Dashboard = () => {
     const dispatch = useDispatch();
-    const [isLoading, setLoading] = useState(true);
+    // const [isLoading, setLoading] = useState(true);
+    const [isLoading, setLoading] = useState(false);
 
-    useEffect(() => {
-        dispatch(getAppointments()).then(() => setLoading(false));
-    }, [dispatch]);
+    // useEffect(() => {
+    //     dispatch(getAppointments()).then(() => setLoading(false));
+    // }, [dispatch]);
 
     return (
         <Grid container spacing={gridSpacing}>

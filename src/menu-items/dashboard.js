@@ -1,8 +1,5 @@
 // assets
-import { HospitalIcon } from 'assets/images/icons/index';
-
-// constant
-const icons = { HospitalIcon };
+import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 
 // ==============================|| DASHBOARD MENU ITEMS ||============================== //
 
@@ -16,7 +13,7 @@ const dashboard = {
             title: 'Главная',
             type: 'item',
             url: '/',
-            icon: icons.HospitalIcon,
+            icon: HomeRoundedIcon,
             breadcrumbs: false
         }
     ]

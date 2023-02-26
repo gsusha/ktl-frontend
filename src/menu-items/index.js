@@ -1,10 +1,10 @@
 import dashboard from './dashboard';
-import clinique from './clinique';
+import manage from './manage';
 
 // ==============================|| MENU ITEMS ||============================== //
 
 const menuItems = {
-    items: [dashboard, clinique]
+    items: [dashboard, manage]
 };
 
 export default menuItems;

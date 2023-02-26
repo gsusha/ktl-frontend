@@ -1,8 +1,8 @@
 {
-    "name": "vethelm",
+    "name": "ktl",
     "version": "3.0.1",
     "private": true,
-    "homepage": "https://gsusha.github.io/vethelm",
+    "homepage": "https://ktl-tech.ru",
     "dependencies": {
         "@date-io/date-fns": "1.x",
         "@devexpress/dx-react-core": "^3.0.3",

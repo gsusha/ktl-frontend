@@ -4,9 +4,6 @@ import MainCard from 'ui-component/cards/MainCard';
 import SkeletonPopularCard from 'ui-component/cards/Skeleton/PopularCard';
 import ChevronRightOutlinedIcon from '@mui/icons-material/ChevronRightOutlined';
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
-import { getShiftDetail, getShifts } from '../../pages/shifts/store/shiftsStore';
 
 const DutyCard = ({ isLoading }) => {
     return (
